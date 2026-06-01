@@ -25,7 +25,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # npm install (not ci): the lockfile may omit platform-specific optional
+      # native deps when generated on a different OS; install reconciles them.
+      - run: npm install --no-audit --no-fund
       - name: Build
         run: npm run build
         # Project pages live at user.github.io/<repo>/ → set base accordingly.
