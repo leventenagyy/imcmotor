@@ -60,6 +60,7 @@ for (const entry of folders) {
 
     const render = (w) =>
       sharp(src)
+        .flatten({ background: '#ffffff' }) // composite transparency onto white (no grey show-through)
         .resize({ width: w, height: Math.round((w * rh) / rw), fit: 'contain', background: '#ffffff' })
         .webp({ quality: 82 })
 
