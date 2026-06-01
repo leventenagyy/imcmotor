@@ -28,7 +28,7 @@
 
   /* Typography */
   --font-sans: "Jost", system-ui, -apple-system, sans-serif;
-  --font-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
 
   /* Layout */
   --shadow-overlay: 0 24px 60px -20px rgba(23, 19, 15, 0.35);
@@ -51,8 +51,11 @@
   h4 {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     text-wrap: balance;
+    /* never let long Hungarian compound words clip */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   ::selection {
@@ -91,17 +94,18 @@
   .t-display {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: clamp(2.75rem, 7vw, 6.5rem);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
+    /* Fraunces reads best a touch smaller + more leading than Bodoni did */
+    font-size: clamp(2.5rem, 5.5vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
   }
 
   .t-h1 {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.012em;
   }
 
   .t-h2 {

@@ -21,7 +21,7 @@ npm run preview  # preview the production build locally
 
 ## What's built (Phase 0 + 1)
 
-- Design system + tokens (Rosso accent, Bodoni Moda + Jost), reusable UI kit.
+- Design system + tokens (Rosso accent, Fraunces + Jost), reusable UI kit.
 - Layout: header with brand mega-menu, mobile drawer, footer, announcement bar.
 - **Finished pages:** Home, Collection (data-driven, filter + sort), Product
   detail (variants, add-to-cart), Cart (+ drawer, persisted), Contact (map +

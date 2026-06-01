@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { cn } from '@/lib/cn'
 
 /**
- * Interim logotype: the wordmark set in Bodoni Moda (design-system §8).
+ * Interim logotype: the wordmark set in Fraunces, the display font (design-system §8).
  * Looks intentional, not broken — drop a real logo asset here when available.
  */
 export function Logo({

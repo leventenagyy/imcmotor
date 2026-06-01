@@ -4,8 +4,10 @@
 > future code (`src/index.css` design tokens + Tailwind theme) must mirror it.
 > Direction: **Premium editorial minimal** — Italian, photo-led, gallery-calm.
 
-**Status:** Draft v0.2 · Brand choices **confirmed** — Rosso accent, Bodoni Moda
-+ Jost, informal "te". Remaining open items in [PRD.md → §16](./PRD.md).
+**Status:** v0.3 · Brand choices **confirmed** — Rosso accent, **Fraunces** +
+Jost, informal "te". (Display font moved Bodoni Moda → **Fraunces** after review:
+more readable at large sizes, no clipping of long Hungarian words.) Remaining
+open items in [PRD.md → §16](./PRD.md).
 
 ---
 
@@ -32,9 +34,11 @@ Display / Inter** fonts + a gold accent. We deliberately override:
 - **Style → refined editorial minimalism** (not Liquid Glass). Glass morphing is
   trendy, contrast-risky, and flagged "moderate-poor performance"; it fights the
   gallery-calm direction the client chose.
-- **Fonts → Bodoni Moda + Jost** (not Playfair/Inter). Inter is the canonical
-  "AI-slop" body font; Bodoni is literally named after the Italian punchcutter
-  Giambattista Bodoni — on-brand heritage, more distinctive than Playfair.
+- **Fonts → Fraunces + Jost** (not Playfair/Inter). Inter is the canonical
+  "AI-slop" body font. We first used Bodoni Moda (didone, very Italian) but its
+  extreme stroke contrast read poorly at hero sizes and thin strokes felt
+  spindly — swapped to **Fraunces**, a warmer "old-style" serif with optical
+  sizing: distinctive and editorial, but far more legible large.
 - The skill's neutral palette and a11y checklist are kept.
 
 ---
@@ -92,43 +96,45 @@ more fashion/heritage than motorsport.
 
 ## 3. Typography
 
-**Display:** `Bodoni Moda` (serif, high-contrast didone) — headlines, hero,
-big numerals, section titles. Weights 400/500/600/700. Display only — never body.
+**Display:** `Fraunces` (serif, "old-style", optical sizing) — headlines, hero,
+section titles. Weights 400–700. Display only — never body. `font-optical-sizing:
+auto` lets large sizes use the refined display cut.
 
 **Body / UI:** `Jost` (geometric grotesque) — body copy, nav, buttons, labels,
 forms, prices. Weights 300/400/500/600.
 
 Both load from Google Fonts and **include `latin-ext`** so Hungarian glyphs
-(`ő ű Ő Ű á é í ó ö ú ü`) render correctly. **Verify ő/ű in both faces during
-build** (acceptance criterion).
+(`ő ű Ő Ű á é í ó ö ú ü`) render correctly. **Verify ő/ű during build** (acceptance criterion).
 
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Jost:wght@300;400;500;600&display=swap');
 ```
 ```
 fontFamily: {
-  display: ['"Bodoni Moda"', 'Georgia', 'serif'],
+  display: ['"Fraunces"', 'Georgia', 'serif'],
   sans:    ['"Jost"', 'system-ui', 'sans-serif'],
 }
 ```
 
-> _Considered alternative (not chosen):_ `Fraunces` (display) + `Hanken Grotesk`
-> (body) — warmer/softer, also Hungarian-safe.
+> _Considered alternatives (not chosen):_ `Bodoni Moda` (too high-contrast large —
+> our first pick, replaced), `Playfair Display` (overused). Body alt: `Hanken Grotesk`.
 
 ### Type scale (fluid)
+All headings also get `overflow-wrap: break-word; hyphens: auto` so long Hungarian
+words never clip (with `<html lang="hu">`).
+
 | Role | Font | Size (clamp) | Weight | Leading | Tracking |
 |---|---|---|---|---|---|
-| Display / Hero | Bodoni Moda | `clamp(3rem, 8vw, 7rem)` | 500 | 0.98 | -0.02em |
-| H1 | Bodoni Moda | `clamp(2.5rem, 5vw, 4.5rem)` | 500 | 1.05 | -0.01em |
-| H2 | Bodoni Moda | `clamp(2rem, 3.5vw, 3rem)` | 500 | 1.1 | -0.01em |
-| H3 | Bodoni Moda | `clamp(1.5rem, 2vw, 2rem)` | 600 | 1.15 | 0 |
-| Lead | Jost | `1.25rem` | 400 | 1.6 | 0 |
+| Display / Hero (`.t-display`) | Fraunces | `clamp(2.5rem, 5.5vw, 5rem)` | 500 | 1.02 | -0.015em |
+| H1 (`.t-h1`) | Fraunces | `clamp(2rem, 4vw, 3.25rem)` | 500 | 1.08 | -0.012em |
+| H2 (`.t-h2`) | Fraunces | `clamp(1.75rem, 3.5vw, 2.75rem)` | 500 | 1.1 | -0.015em |
+| H3 (`.t-h3`) | Fraunces | `clamp(1.35rem, 2vw, 1.85rem)` | 600 | 1.15 | -0.015em |
+| Lead | Jost | `clamp(1.05rem, 1.4vw, 1.25rem)` | 400 | 1.6 | 0 |
 | Body | Jost | `1rem` (16px min) | 400 | 1.65 | 0 |
 | Small | Jost | `0.875rem` | 400 | 1.55 | 0 |
 | Eyebrow / Label | Jost | `0.75rem` | 600 | 1.2 | `0.18em`, UPPERCASE |
 
 - **Measure:** 60–75 characters for body blocks.
-- **Numerals:** prices and specs may use Bodoni for editorial emphasis on PDP.
 
 ---
 
@@ -209,7 +215,7 @@ deliberate and be trivially swappable.
   hairline frame and a centered `Eyebrow` label naming the intended asset
   (e.g. `VESPA · PRIMAVERA 125 · 4:5`). One shared `<Placeholder ratio label />`
   component; replacing it later = swapping the `src`.
-- **Logo:** set the wordmark in **Bodoni Moda** ("IMC MOTOR") as an interim
+- **Logo:** set the wordmark in **Fraunces** ("IMC MOTOR") as an interim
   logotype — looks intentional, not broken; real logo drops into one slot.
 - **Brand marks (Vespa/Aprilia/etc.):** name set in type, not fake logos, to
   avoid trademark misuse. Swap for official assets when licensed.

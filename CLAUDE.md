@@ -67,7 +67,7 @@ src/
 - Stack: **Vite + React + TS + Tailwind v4**; deploy: **GitHub Pages** (static).
 - **Own dedicated GitHub repo** (not the `hermes-marketing-team` workspace repo).
 - Aesthetic: **premium editorial minimal**.
-- Accent: **Rosso `#C81D25`** (Italian red). Fonts: **Bodoni Moda + Jost**.
+- Accent: **Rosso `#C81D25`** (Italian red). Fonts: **Fraunces + Jost**.
 - Tone: informal **"te"**. **Hungarian only** at launch.
 - **Front-end only**, mock data, **Shopify-shaped**.
 - Clean break from UNAS; no legacy integrations carried over.

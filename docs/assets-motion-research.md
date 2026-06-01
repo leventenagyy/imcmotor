@@ -10,7 +10,7 @@
 
 > **Build update (what shipped vs. this plan).** Installed: **`lucide-react`** +
 > **`motion`**. *Deferred* (not yet needed): `vite-plugin-svgr` (the interim
-> wordmark is a Bodoni **text** `Logo` component, not an imported SVG, per
+> wordmark is a Fraunces **text** `Logo` component, not an imported SVG, per
 > design-system §8), `tw-animate-css` (drawers/menus use Motion's
 > `AnimatePresence` instead), and `LazyMotion`/`m` (used plain `motion.*` +
 > `MotionConfig reducedMotion="user"` in `src/main.tsx` for simplicity — revisit
@@ -176,7 +176,7 @@ design-system §6 says "CSS for simple cases." For Tailwind v4:
 
 ## 4. SVG tooling — ship your own marks
 
-For the interim **Bodoni "IMC MOTOR" wordmark** (design-system §8), the
+For the interim **Fraunces "IMC MOTOR" wordmark** (design-system §8), the
 `<Placeholder>` system, and any custom glyphs (e.g. a scooter mark):
 
 - **[`vite-plugin-svgr`](https://www.npmjs.com/package/vite-plugin-svgr)** — import

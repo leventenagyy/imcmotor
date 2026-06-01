@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/cn'
 
-type Variant = 'primary' | 'secondary' | 'ghost' | 'link'
+type Variant = 'primary' | 'secondary' | 'ghost' | 'ghostLight' | 'link'
 type Size = 'sm' | 'md' | 'lg'
 
 const base =
@@ -12,6 +12,7 @@ const variantClasses: Record<Variant, string> = {
   primary: 'rounded-md bg-accent text-accent-ink hover:bg-accent-hover',
   secondary: 'rounded-md bg-ink text-paper hover:bg-ink-soft',
   ghost: 'rounded-md border border-hairline text-ink hover:border-ink bg-transparent',
+  ghostLight: 'rounded-md border border-paper/30 text-paper hover:border-paper hover:bg-paper/5 bg-transparent',
   link: 'text-ink underline underline-offset-4 decoration-1 hover:text-accent p-0',
 }
 

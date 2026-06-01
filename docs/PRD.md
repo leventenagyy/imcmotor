@@ -197,7 +197,7 @@ milestone, **P2** = later. (Maps to §15 phases.)
 
 ### Home `/` — **P0**
 Editorial landing. Sections (data-driven from `data/home.ts`):
-1. **Hero** — full-bleed image, short Bodoni headline, tagline, primary CTA
+1. **Hero** — full-bleed image, short Fraunces headline, tagline, primary CTA
    (browse) + secondary (book test ride). Staggered load reveal.
 2. **Brand row** — 4 brand cards (Vespa/Aprilia/Moto Guzzi/Piaggio) → collections.
 3. **Featured models** — "Kiemelt ajánlataink" product cards (from featured flag).
@@ -220,7 +220,7 @@ Acceptance: filtering/sorting work client-side on mock data; deep-linkable.
 
 ### Product detail `/termek/:handle` — **P0**
 - Breadcrumbs; **Gallery** (thumbs + main, 4:5).
-- Title (Bodoni), brand, short hook, **Price** (+ compare-at if on sale).
+- Title (Fraunces), brand, short hook, **Price** (+ compare-at if on sale).
 - **VariantSelector** (color/size) → updates price/stock/image.
 - `QuantityStepper` + **AddToCart** (opens cart drawer) + favorite toggle.
 - Secondary CTAs by type: bikes → "Próbamotort foglalok" / "Ajánlatot kérek";
@@ -324,7 +324,7 @@ Full spec in **[design-system.md](./design-system.md)**. Essentials:
   Liquid-Glass auto-pick — see design-system §1).
 - **Palette:** warm stone neutrals (`#FAF8F5` paper, `#17130F` ink) + **one
   accent** — ✅ **Rosso `#C81D25`** (confirmed).
-- **Type:** **Bodoni Moda** (display) + **Jost** (body/UI), `latin-ext` for HU.
+- **Type:** **Fraunces** (display) + **Jost** (body/UI), `latin-ext` for HU.
 - **Layout:** 12-col, `max-w-1320`, asymmetric editorial, generous whitespace,
   1px hairlines, crisp small radii, flat (shadows only for overlays).
 - **Motion:** calm staggered reveals; 150–300ms micro; reduced-motion honored.
@@ -461,7 +461,7 @@ Phase 1 is the realistic "today/first build" target.
 1. **Repo / hosting** — the site gets its **own new GitHub repo** (clean Pages
    deploy), separate from `hermes-marketing-team`.
 2. **Accent color** — **Rosso `#C81D25`** (Italian red).
-3. **Typography** — **Bodoni Moda + Jost**.
+3. **Typography** — **Fraunces + Jost**.
 4. **Address form** — informal **"te"** throughout.
 
 ### 🟡 Still open (defaults in **bold** are my recommendation)
