@@ -30,6 +30,11 @@ function variants(
   }))
 }
 
+// Real product photos live in public/images/products/<handle>/ as optimized
+// WebP (run `npm run images`). Base-path aware for GitHub Pages.
+const img = (handle: string, n: number): string =>
+  `${import.meta.env.BASE_URL}images/products/${handle}/${handle}-${String(n).padStart(2, '0')}.webp`
+
 export const products: Product[] = [
   // ============================ VESPA ============================
   {
@@ -45,9 +50,7 @@ export const products: Product[] = [
     featured: true,
     status: 'active',
     images: [
-      { src: null, alt: 'Vespa Primavera 125 – oldalnézet', ratio: '4/5' },
-      { src: null, alt: 'Vespa Primavera 125 – részlet', ratio: '4/5' },
-      { src: null, alt: 'Vespa Primavera 125 – műszerfal', ratio: '4/5' },
+      { src: img('vespa-primavera-125', 1), alt: 'Vespa Primavera 125 – oldalnézet', ratio: '4/5' },
     ],
     options: [{ name: 'Szín', values: ['Bianco Innocenza', 'Verde Relax', 'Blu Incanto'] }],
     variants: variants('vespa-primavera-125', 'Szín', ['Bianco Innocenza', 'Verde Relax', 'Blu Incanto'], 1_890_000),
@@ -73,8 +76,7 @@ export const products: Product[] = [
     featured: false,
     status: 'active',
     images: [
-      { src: null, alt: 'Vespa Sprint 125 – oldalnézet', ratio: '4/5' },
-      { src: null, alt: 'Vespa Sprint 125 – fényszóró', ratio: '4/5' },
+      { src: img('vespa-sprint-125', 1), alt: 'Vespa Sprint S 125 – oldalnézet', ratio: '4/5' },
     ],
     options: [{ name: 'Szín', values: ['Nero Convinto', 'Rosso Passione', 'Bianco'] }],
     variants: variants('vespa-sprint-125', 'Szín', ['Nero Convinto', 'Rosso Passione', 'Bianco'], 1_990_000),
@@ -100,8 +102,8 @@ export const products: Product[] = [
     featured: false,
     status: 'active',
     images: [
-      { src: null, alt: 'Vespa GTS 300 Super – oldalnézet', ratio: '4/5' },
-      { src: null, alt: 'Vespa GTS 300 Super – hátsó', ratio: '4/5' },
+      { src: img('vespa-gts-300-super', 1), alt: 'Vespa GTS 300 Super – sárga', ratio: '4/5' },
+      { src: img('vespa-gts-300-super', 2), alt: 'Vespa GTS 300 Super – zöld', ratio: '4/5' },
     ],
     options: [{ name: 'Szín', values: ['Grigio Materia', 'Nero Vulcano', 'Rosso'] }],
     variants: variants('vespa-gts-300-super', 'Szín', ['Grigio Materia', 'Nero Vulcano', 'Rosso'], 3_290_000),
@@ -127,9 +129,7 @@ export const products: Product[] = [
     featured: true,
     status: 'active',
     images: [
-      { src: null, alt: 'Vespa 946 10° Anniversario – oldalnézet', ratio: '4/5' },
-      { src: null, alt: 'Vespa 946 – részletek', ratio: '4/5' },
-      { src: null, alt: 'Vespa 946 – ülés', ratio: '4/5' },
+      { src: img('vespa-946-10-anniversario', 1), alt: 'Vespa 946 10° Anniversario – oldalnézet', ratio: '4/5' },
     ],
     options: [{ name: 'Szín', values: ['Verde 946', 'Bronzo'] }],
     variants: variants('vespa-946-10-anniversario', 'Szín', ['Verde 946', 'Bronzo'], 6_990_000, { soldOut: ['Bronzo'] }),

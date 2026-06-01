@@ -50,24 +50,25 @@ for (const entry of folders) {
     const stem = path.join(dir, file.replace(/\.[^.]+$/, ''))
     const src = path.join(dir, file)
 
+    // Cap widths at the source width: never upscale into blur, and never emit a
+    // width the master can't fill (keeps any future srcset honest).
+    const meta = await sharp(src).metadata()
+    const cap = meta.width ?? widths[widths.length - 1]
+    const targets = Array.from(
+      new Set([...widths.filter((w) => w <= cap), Math.min(cap, widths[widths.length - 1])]),
+    ).sort((a, b) => a - b)
+
     const render = (w) =>
       sharp(src)
-        .resize({
-          width: w,
-          height: Math.round((w * rh) / rw),
-          fit: 'contain',
-          background: '#ffffff',
-          withoutEnlargement: true, // never upscale a low-res master into blur
-        })
+        .resize({ width: w, height: Math.round((w * rh) / rw), fit: 'contain', background: '#ffffff' })
         .webp({ quality: 82 })
 
-    for (const w of widths) {
+    for (const w of targets) {
       await render(w).toFile(`${stem}-${w}.webp`)
     }
-    // Fallback = largest width.
-    await render(widths[widths.length - 1]).toFile(`${stem}.webp`)
+    await render(targets[targets.length - 1]).toFile(`${stem}.webp`) // fallback = largest
     count++
-    console.log(`✓ ${handle}/${file}`)
+    console.log(`✓ ${handle}/${file}  →  ${targets.join('/')}w`)
   }
 }
 
