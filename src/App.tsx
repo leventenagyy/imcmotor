@@ -4,7 +4,10 @@ import HomePage from './routes/HomePage'
 import CollectionPage from './routes/CollectionPage'
 import ProductPage from './routes/ProductPage'
 import CartPage from './routes/CartPage'
+import CheckoutPage from './routes/CheckoutPage'
 import ServicePage from './routes/ServicePage'
+import ServiceBookingPage from './routes/ServiceBookingPage'
+import RentalPage from './routes/RentalPage'
 import ContactPage from './routes/ContactPage'
 import NewsPage from './routes/NewsPage'
 import NewsArticlePage from './routes/NewsArticlePage'
@@ -36,50 +39,15 @@ export default function App() {
 
         <Route path="termek/:handle" element={<ProductPage />} />
         <Route path="kosar" element={<CartPage />} />
+        <Route path="penztar" element={<CheckoutPage />} />
         <Route path="szerviz" element={<ServicePage />} />
+        <Route path="szerviz/foglalas" element={<ServiceBookingPage />} />
+        <Route path="berles" element={<RentalPage />} />
         <Route path="kapcsolat" element={<ContactPage />} />
         <Route path="hirek" element={<NewsPage />} />
         <Route path="hirek/:slug" element={<NewsArticlePage />} />
 
         {/* Deferred to later phases — on-brand placeholders keep nav complete (PRD §15) */}
-        <Route
-          path="penztar"
-          element={
-            <StubPage
-              eyebrow="Pénztár"
-              title="Pénztár"
-              intro="A teljes pénztár folyamat (adatok → szállítás → fizetés → visszaigazolás) a következő fejlesztési ütemben készül el."
-              crumbs={[{ label: 'Főoldal', to: '/' }, { label: 'Pénztár' }]}
-              note="A pénztár UI hamarosan elérhető. Ez egy demó – valódi fizetés nincs."
-            />
-          }
-        />
-        <Route
-          path="szerviz/foglalas"
-          element={
-            <StubPage
-              eyebrow="Szerviz"
-              title="Időpontfoglalás"
-              intro="Az ütemezett, naptáras időpontfoglalás a következő ütemben készül el. Addig is foglalj telefonon vagy e-mailben."
-              crumbs={[
-                { label: 'Főoldal', to: '/' },
-                { label: 'Szerviz', to: '/szerviz' },
-                { label: 'Időpontfoglalás' },
-              ]}
-            />
-          }
-        />
-        <Route
-          path="berles"
-          element={
-            <StubPage
-              eyebrow="Bérlés & Teszt"
-              title="Bérelhető és teszt motorok"
-              intro="A bérlési és próbamotor-foglalási folyamat a következő ütemben készül el."
-              crumbs={[{ label: 'Főoldal', to: '/' }, { label: 'Bérlés' }]}
-            />
-          }
-        />
         <Route
           path="finanszirozas"
           element={

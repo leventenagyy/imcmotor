@@ -11,7 +11,7 @@ export const homeContent = {
     subtitle:
       'Vespa, Aprilia, Moto Guzzi és Piaggio – értékesítés, szerviz, bérlés és kiegészítők egy helyen.',
     image: {
-      src: `${import.meta.env.BASE_URL}images/hero-imc-showroom.png`,
+      src: `${import.meta.env.BASE_URL}images/hero-imc-showroom.jpg`,
       alt: 'IMC Motor szalon olasz robogókkal és motorokkal',
       ratio: '16/9',
     } as ProductImage,
