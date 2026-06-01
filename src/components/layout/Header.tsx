@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { ChevronDown, Heart, Menu, ShoppingBag, User } from 'lucide-react'
@@ -22,6 +22,7 @@ export function Header() {
   const [megaOpen, setMegaOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
 
   // Close menus on navigation.
   useEffect(() => {
@@ -46,8 +47,22 @@ export function Header() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  // Click outside the header closes the mega menu (the header's backdrop-blur
+  // would trap a fixed backdrop element, so we use a listener instead).
+  useEffect(() => {
+    if (!megaOpen) return
+    const onDown = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMegaOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onDown)
+    return () => document.removeEventListener('mousedown', onDown)
+  }, [megaOpen])
+
   return (
     <header
+      ref={headerRef}
       className={cn(
         'sticky top-0 z-30 bg-paper/90 backdrop-blur transition-colors',
         (scrolled || megaOpen) && 'border-b border-hairline',
@@ -123,14 +138,8 @@ export function Header() {
       {/* Mega menu (desktop) */}
       <AnimatePresence>
         {megaOpen ? (
-          <>
-            <div
-              className="fixed inset-0 top-[var(--header-h,5rem)] z-30 hidden lg:block"
-              onClick={() => setMegaOpen(false)}
-              aria-hidden="true"
-            />
-            <motion.div
-              className="absolute inset-x-0 top-full z-40 hidden border-b border-hairline bg-paper shadow-[var(--shadow-overlay)] lg:block"
+          <motion.div
+            className="absolute inset-x-0 top-full z-40 hidden border-b border-hairline bg-paper shadow-[var(--shadow-overlay)] lg:block"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -177,7 +186,6 @@ export function Header() {
                 </div>
               </Container>
             </motion.div>
-          </>
         ) : null}
       </AnimatePresence>
 

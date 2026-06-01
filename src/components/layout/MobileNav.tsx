@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { Phone, X } from 'lucide-react'
@@ -9,7 +10,12 @@ import { Logo } from './Logo'
 export function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
   useScrollLock(open)
 
-  return (
+  // Portal to <body>: the header uses backdrop-blur, which makes it the
+  // containing block for fixed-position descendants. Rendering the drawer here
+  // (outside the header) lets `fixed` resolve against the viewport again.
+  if (typeof document === 'undefined') return null
+
+  return createPortal(
     <AnimatePresence>
       {open ? (
         <div className="lg:hidden">
@@ -109,6 +115,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
           </motion.div>
         </div>
       ) : null}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   )
 }
