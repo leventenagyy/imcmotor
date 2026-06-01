@@ -1,0 +1,30 @@
+{
+  "name": "imcmotor-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "IMC Motor — Hungarian e-commerce front end (Vite + React + TS + Tailwind). Front-end only, mock data, Shopify-oriented. See CLAUDE.md and docs/PRD.md.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "^1.17.0",
+    "motion": "^12.40.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-helmet-async": "^3.0.0",
+    "react-router-dom": "^7.16.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
+  }
+}

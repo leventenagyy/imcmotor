@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — mirror of docs/design-system.md.
+  Tailwind v4 reads these from @theme and generates utilities
+  (e.g. --color-paper -> bg-paper/text-paper; --font-display -> font-display).
+  Change a brand value here and it propagates across the whole site.
+*/
+@theme {
+  /* Neutrals (warm stone) */
+  --color-paper: #faf8f5;
+  --color-surface: #ffffff;
+  --color-sunken: #f2eee8;
+  --color-ink: #17130f;
+  --color-ink-soft: #3a332d;
+  --color-stone: #6b6259;
+  --color-hairline: #e6dfd5;
+
+  /* Accent — Rosso (Italian racing red) */
+  --color-accent: #c81d25;
+  --color-accent-hover: #a8161d;
+  --color-accent-ink: #ffffff;
+
+  /* Semantic (independent of accent) */
+  --color-success: #3f7d3f;
+  --color-warning: #b5852a;
+  --color-danger: #b42318;
+
+  /* Typography */
+  --font-sans: "Jost", system-ui, -apple-system, sans-serif;
+  --font-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
+
+  /* Layout */
+  --shadow-overlay: 0 24px 60px -20px rgba(23, 19, 15, 0.35);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-synthesis-weight: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Quiet, editorial scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-hairline);
+    border: 3px solid var(--color-paper);
+    border-radius: 999px;
+  }
+}
+
+/*
+  Editorial type scale — see docs/design-system.md §3.
+  Use these classes for headline moments; Tailwind utilities for the rest.
+*/
+@layer components {
+  .t-eyebrow {
+    @apply font-sans text-xs font-semibold uppercase text-stone;
+    letter-spacing: 0.18em;
+  }
+
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.75rem, 7vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.1;
+  }
+
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 2vw, 1.85rem);
+    line-height: 1.15;
+  }
+
+  .t-lead {
+    @apply font-sans text-stone;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.6;
+  }
+}
+
+/* Respect reduced-motion everywhere (a11y gate). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

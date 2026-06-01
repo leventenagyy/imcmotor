@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#FAF8F5" />
+
+    <title>IMC Motor — Vespa · Aprilia · Moto Guzzi · Piaggio | Dunakeszi</title>
+    <meta
+      name="description"
+      content="IMC Motor Dunakeszi — Vespa, Aprilia, Moto Guzzi és Piaggio márkakereskedés és szakszerviz. Új és használt motorok, robogók, kiegészítők, bérlés és szerviz egy helyen."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:site_name" content="IMC Motor Dunakeszi" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="IMC Motor — olasz motorok Dunakeszin" />
+    <meta
+      property="og:description"
+      content="Vespa, Aprilia, Moto Guzzi, Piaggio. Új és használt motorok, kiegészítők, bérlés és szakszerviz."
+    />
+
+    <!-- Fonts: Bodoni Moda (display) + Jost (body). latin-ext for Hungarian glyphs. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      SPA fallback for GitHub Pages: restore the real path after the 404.html
+      redirect (rafgraph / spa-github-pages, MIT). Must run before the app.
+    -->
+    <script>
+      (function () {
+        var l = window.location
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
