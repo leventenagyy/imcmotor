@@ -24,14 +24,20 @@ export function Hero() {
           homeContent.hero.image.src and it becomes the full-bleed background. */}
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         {hasPhoto ? (
-          <img src={h.image.src ?? undefined} alt="" className="h-full w-full object-cover" />
+          <img
+            src={h.image.src ?? undefined}
+            alt=""
+            fetchPriority="high"
+            className="h-full w-full object-cover"
+          />
         ) : null}
-        {/* warm radial depth */}
+        {/* Overlay for text legibility. With a photo: strong on the left (where
+            copy sits) + a bottom scrim so it also reads on narrow screens. */}
         <div
           className="absolute inset-0"
           style={{
             background: hasPhoto
-              ? 'linear-gradient(90deg, rgba(16,12,10,0.92) 0%, rgba(16,12,10,0.65) 45%, rgba(16,12,10,0.35) 100%)'
+              ? 'linear-gradient(90deg, rgba(16,12,10,0.92) 0%, rgba(16,12,10,0.72) 45%, rgba(16,12,10,0.45) 100%), linear-gradient(0deg, rgba(16,12,10,0.55) 0%, rgba(16,12,10,0) 45%)'
               : 'radial-gradient(125% 125% at 12% 0%, #2a2320 0%, #17130f 52%, #100c0a 100%)',
           }}
         />

@@ -1,14 +1,18 @@
+import { useRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { ShoppingBag, X } from 'lucide-react'
 import { useCart } from '@/lib/cart'
 import { useScrollLock } from '@/lib/useScrollLock'
+import { useDialog } from '@/lib/useDialog'
 import { formatHUF } from '@/lib/format'
 import { Button, EmptyState } from '@/components/ui'
 import { CartLineItem } from './CartLineItem'
 
 export function CartDrawer() {
   const { items, subtotal, count, isOpen, closeCart, updateQuantity, removeItem } = useCart()
+  const panelRef = useRef<HTMLDivElement>(null)
   useScrollLock(isOpen)
+  useDialog(panelRef, { open: isOpen, onClose: closeCart })
 
   return (
     <AnimatePresence>
@@ -24,7 +28,9 @@ export function CartDrawer() {
             aria-hidden="true"
           />
           <motion.div
-            className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-paper shadow-[var(--shadow-overlay)]"
+            ref={panelRef}
+            tabIndex={-1}
+            className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-paper shadow-[var(--shadow-overlay)] focus:outline-none"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}

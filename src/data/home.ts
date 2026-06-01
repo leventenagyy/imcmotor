@@ -10,7 +10,11 @@ export const homeContent = {
     title: 'Olasz motorok, magyar szakértelemmel',
     subtitle:
       'Vespa, Aprilia, Moto Guzzi és Piaggio – értékesítés, szerviz, bérlés és kiegészítők egy helyen.',
-    image: { src: null, alt: 'IMC Motor – olasz motorok Dunakeszin', ratio: '16/9' } as ProductImage,
+    image: {
+      src: `${import.meta.env.BASE_URL}images/hero-imc-showroom.png`,
+      alt: 'IMC Motor szalon olasz robogókkal és motorokkal',
+      ratio: '16/9',
+    } as ProductImage,
     primaryCta: { label: 'Modellek böngészése', to: '/ujdonsagok' },
     secondaryCta: { label: 'Próbamotort foglalok', to: '/berles' },
   },

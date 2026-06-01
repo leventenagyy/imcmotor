@@ -1,14 +1,18 @@
+import { useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { Phone, X } from 'lucide-react'
 import { brandMenus, categoryLinks, primaryNav, site } from '@/data'
 import { useScrollLock } from '@/lib/useScrollLock'
+import { useDialog } from '@/lib/useDialog'
 import { Button } from '@/components/ui'
 import { Logo } from './Logo'
 
 export function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const panelRef = useRef<HTMLDivElement>(null)
   useScrollLock(open)
+  useDialog(panelRef, { open, onClose })
 
   // Portal to <body>: the header uses backdrop-blur, which makes it the
   // containing block for fixed-position descendants. Rendering the drawer here
@@ -29,7 +33,9 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
             aria-hidden="true"
           />
           <motion.div
-            className="fixed inset-y-0 right-0 z-50 flex w-[88%] max-w-sm flex-col bg-paper shadow-[var(--shadow-overlay)]"
+            ref={panelRef}
+            tabIndex={-1}
+            className="fixed inset-y-0 right-0 z-50 flex w-[88%] max-w-sm flex-col bg-paper shadow-[var(--shadow-overlay)] focus:outline-none"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}

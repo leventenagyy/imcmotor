@@ -1,4 +1,4 @@
-# CLAUDE.md — IMC Motor website · routing index
+# AGENTS.md — IMC Motor website · routing index
 
 > **Read me first.** This is the navigation map for the project: where things
 > live, what they do, and where to make a given change. Keep it current — when
@@ -11,12 +11,11 @@ motorcycle dealer — Vespa, Aprilia, Moto Guzzi, Piaggio — Dunakeszi). Built 
 **mock data**, structured for an **eventual Shopify migration**. Visual direction:
 **premium editorial minimal**.
 
-**Project status:** 🟢 **Live** at https://leventenagyy.github.io/imcmotor/
-(auto-deploys on push to `main`). Phase 0 + Phase 1 done (scaffold, design system,
-showcase pages: Home, Collection, Product, Cart, Contact, Service, News).
-**In progress:** a11y/polish pass + **Phase 2** (checkout + scheduled booking).
-Later-phase pages (account, legal, finance/warranty/motorhotel) are on-brand
-placeholders. Roadmap: [docs/PRD.md §15](./docs/PRD.md).
+**Project status:** 🟢 **Phase 0 + Phase 1 built.** Scaffold, design system, and
+showcase pages (Home, Collection, Product, Cart, Contact, Service + News) run
+locally and build clean (`npm run build`). Later-phase pages (checkout, booking,
+account, legal, finance/warranty/motorhotel) are on-brand placeholders. Roadmap &
+remaining phases: [docs/PRD.md §15](./docs/PRD.md).
 
 ## Where to look / where to edit
 
@@ -84,12 +83,9 @@ src/
 - Routes lowercase-hyphenated Hungarian (PRD §7); a11y is a gate (design-system §9).
 - Commit per logical step; keep this file + folder READMEs updated as structure grows.
 
-## Repo & deploy
-- Own repo: **github.com/leventenagyy/imcmotor** (public), branch `main`.
-- This folder is also nested inside the `hermes-marketing-team` workspace dir —
-  harmless; the dedicated repo is the source of truth and deploy target.
-- Push to `main` → [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml)
-  builds and publishes to **https://leventenagyy.github.io/imcmotor/** (base path
-  `/imcmotor/`; `public/404.html` handles SPA deep links).
-- Custom domain later: add `public/CNAME`, drop `BASE_PATH` in the workflow, set
-  `pathSegmentsToKeep = 0` in `404.html`, and update the absolute `og:` URLs in `index.html`.
+## ⚠️ Repo note
+This folder is currently a **subdirectory of the `hermes-marketing-team`**
+workspace repo (`github.com/leventenagyy/hermes-marketing-team`). **Decision:** the
+site gets its **own new repo** before deploy (PRD §14). When build starts, init a
+fresh repo here (and ignore this folder from the parent) — don't deploy from the
+workspace repo.
