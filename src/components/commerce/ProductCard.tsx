@@ -18,6 +18,7 @@ export function ProductCard({ product, priority }: { product: Product; priority?
         <Media
           image={product.images[0]}
           priority={priority}
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
           className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
         <div className="absolute left-3 top-3 flex gap-1.5">

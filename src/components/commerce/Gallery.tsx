@@ -10,7 +10,7 @@ export function Gallery({ images, title }: { images: ProductImage[]; title: stri
   return (
     <div className="space-y-4">
       <div className="overflow-hidden rounded-md bg-sunken">
-        <Media image={main} priority />
+        <Media image={main} priority sizes="(min-width: 1024px) 50vw, 100vw" />
       </div>
       {images.length > 1 ? (
         <div className="grid grid-cols-4 gap-3">

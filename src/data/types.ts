@@ -15,6 +15,10 @@ export interface ProductImage {
   src: string | null
   alt: string
   ratio?: AspectRatio
+  /** Optional responsive candidates ("…-640.webp 640w, …-1024.webp 1024w"). */
+  srcset?: string
+  /** Optional sizes hint; component prop overrides this. */
+  sizes?: string
 }
 
 export interface ProductOption {

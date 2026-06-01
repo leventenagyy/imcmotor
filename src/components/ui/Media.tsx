@@ -52,8 +52,9 @@ export function Media({
   return (
     <img
       src={image.src}
+      srcSet={image.srcset}
+      sizes={sizes ?? image.sizes}
       alt={image.alt}
-      sizes={sizes}
       loading={priority ? 'eager' : 'lazy'}
       decoding="async"
       className={cn('block h-full w-full object-cover', className)}
