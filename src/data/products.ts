@@ -32,8 +32,11 @@ function variants(
 
 // Real product photos live in public/images/products/<handle>/ as optimized
 // WebP (run `npm run images`). Base-path aware for GitHub Pages.
+// IMG_V busts browser/CDN cache when an image is replaced under the same name —
+// bump it whenever you re-run the optimizer on existing photos.
+const IMG_V = 2
 const img = (handle: string, n: number): string =>
-  `${import.meta.env.BASE_URL}images/products/${handle}/${handle}-${String(n).padStart(2, '0')}.webp`
+  `${import.meta.env.BASE_URL}images/products/${handle}/${handle}-${String(n).padStart(2, '0')}.webp?v=${IMG_V}`
 
 export const products: Product[] = [
   // ============================ VESPA ============================
