@@ -12,11 +12,11 @@ motorcycle dealer — Vespa, Aprilia, Moto Guzzi, Piaggio — Dunakeszi). Built 
 **premium editorial minimal**.
 
 **Project status:** 🟢 **Live** at https://leventenagyy.github.io/imcmotor/
-(auto-deploys on push to `main`). Phase 0 + Phase 1 done (scaffold, design system,
-showcase pages: Home, Collection, Product, Cart, Contact, Service, News).
-**In progress:** a11y/polish pass + **Phase 2** (checkout + scheduled booking).
-Later-phase pages (account, legal, finance/warranty/motorhotel) are on-brand
-placeholders. Roadmap: [docs/PRD.md §15](./docs/PRD.md).
+(auto-deploys on push to `main`). **Phase 0–2 done** + a11y/polish pass: scaffold,
+design system, showcase pages (Home, Collection, Product, Cart, Contact, Service,
+News), **multi-step checkout**, and **scheduled service/rental booking** flows
+(calendar + slots; drawers have focus-trap/Esc). Still placeholders: account,
+legal, finanszírozás, garancia, motorhotel. Roadmap: [docs/PRD.md §15](./docs/PRD.md).
 
 ## Where to look / where to edit
 
